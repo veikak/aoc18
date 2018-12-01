@@ -1,7 +1,6 @@
 (ns aoc18.core
-  (:gen-class))
-
-(require '(aoc18 day-1))
+  (:gen-class)
+  (:require [aoc18 day-1]))
 
 (defn -main
   [& args]
