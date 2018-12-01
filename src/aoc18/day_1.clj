@@ -17,7 +17,7 @@
 
 (defn part-2
   []
-  (def in-cycle (cycle (into [] (puzzle-input))))
+  (def in-cycle (cycle (puzzle-input)))
   (loop [freq 0, changes in-cycle, prev (set '())]
     (if (contains? prev freq)
       (println freq)
