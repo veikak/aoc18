@@ -47,8 +47,7 @@
    [in (puzzle-input)
     id-len (count (first in))
     sorted-by-subs (map #(sort-by-subs %1 in) (range id-len))]
-   (loop
-    [ids (reduce concat () sorted-by-subs)]
+   (loop [ids (reduce concat () sorted-by-subs)]
      (let [[first-id & [second-id & rest-ids]] ids]
        (if-let [diff-i (diff-by-1 first-id second-id)]
          (println (str
