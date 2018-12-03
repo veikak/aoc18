@@ -17,11 +17,10 @@
 
 (defn part-1
   []
-  (def freqs
-    (->>
-     (puzzle-input)
-     (map frequencies)
-     (map vals)
-     ))
-  (def checksum (reduce * 1 (map #(count-appearances % freqs) [2 3])))
-  (println checksum))
+  (let
+   [freqs (->>
+           (puzzle-input)
+           (map frequencies)
+           (map vals))
+    checksum (reduce * 1 (map #(count-appearances % freqs) [2 3]))]
+   (println checksum)))
