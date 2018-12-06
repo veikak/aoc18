@@ -81,3 +81,20 @@
     minute-freq (frequencies (get minutes most-asleep))
     most-likely-minute (first (apply max-key second (into [] minute-freq)))]
   (println (* most-asleep most-likely-minute))))
+
+(defn part-2 []
+  (let
+   [most-asleep-by-id
+    (->>
+     (puzzle-input)
+     minutes-asleep
+     (map-hash-map frequencies)
+     (map-hash-map #(apply hash-map (apply max-key second (into [] %)))))
+    [sleepiest-id & [[sleepiest-min & _]]]
+    (->>
+     most-asleep-by-id
+     (map-hash-map #(first (into [] %)))
+     (into [])
+     (sort-by #(second (second %)))
+     last)]
+   (println (* sleepiest-id sleepiest-min))))
