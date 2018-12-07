@@ -44,3 +44,18 @@
    react-polymer
    count
    println))
+
+(defn remove-str-case-i [s r]
+  (string/replace s (re-pattern (format "(?i)%s" r)) ""))
+
+(defn part-2 []
+  (let
+   [in (puzzle-input)
+    alphabet (apply str (map char (range 97 123)))
+    variations (map #(remove-str-case-i in %) alphabet)]
+   (->>
+    variations
+    (map react-polymer)
+    (apply min-key count)
+    count
+    println)))
